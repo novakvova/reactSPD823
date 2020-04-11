@@ -1,34 +1,39 @@
 import React, { Component } from 'react';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import './App.css';
-import Friend, {appFriend} from './Friend';
+
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import FriendPage from './components/FriendPage';
+import PrivatBank from './components/PrivatBank';
 
 class App extends Component {
-  state = {
-    appName: "Салют",
-    isShowFriend: false
-  }
-
-  // showFriend() {
-
-  // }
-  showFriend=(e)=>{
-    e.preventDefault();
-    //alert("OnClick");
-    this.setState({isShowFriend: !this.state.isShowFriend});
-  }
-
   render() {
-    console.log("---RENDER AppComponent------", this.state);
-    const {appName, isShowFriend}=this.state;
+    console.log("------APP RENDER-----")
     return (
-      <div className="App">
-        <h1>Hello react {appName}</h1>
+      <Router>
+        <div className="container">
+          <Navbar/>
+        <Switch>
 
-        <button className="btn btn-success" onClick={this.showFriend}>Показати/приховати друга</button>
-        {isShowFriend ? <Friend name="Петро"/> : ""}
+          <Route exact path='/' >
+            <Home />
+          </Route>
 
-      </div>
+          <Route exact path='/friends' >
+            <FriendPage />
+          </Route>
+
+          <Route exact path='/privat' >
+            <PrivatBank />
+          </Route>
+        </Switch>
+        </div>
+      </Router>
     );
   }
 }

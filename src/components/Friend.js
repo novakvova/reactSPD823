@@ -5,8 +5,8 @@ class Friend extends Component {
         super(props);
         this.state = {
             isShow: true,
-            btnMessage: "Приховати текст", 
-            image: "https://static.espreso.tv/uploads/article/183052/images/im578x383-12.png"
+            btnMessage: "Приховати текст"
+            
         };
         //this.onClickHideText=this.onClickHideText.bind(this);
 
@@ -34,8 +34,8 @@ class Friend extends Component {
     render() {
         console.log("-----Render Friend-------", this.state);
         console.log("----Friend props---", this.props);
-        const { btnMessage, image, isShow } = this.state;
-        const {name} = this.props;
+        const { btnMessage,  isShow } = this.state;
+        const {name, image} = this.props;
 
         const btnHide = (
             <a href="#" onClick={this.onClickHideText} className="btn btn-primary">{btnMessage}</a>
